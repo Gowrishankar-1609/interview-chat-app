@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Mic, MicOff, Send, Square } from 'lucide-react';
 
-const VoiceInput = ({ onSendMessage }) => {
+const VoiceInput = ({ onSendMessage, onInterviewerResponse }) => {
   const [isRecording, setIsRecording] = useState(false);
   const [textInput, setTextInput] = useState('');
   const [recordingTime, setRecordingTime] = useState(0);
@@ -124,6 +124,11 @@ const VoiceInput = ({ onSendMessage }) => {
         sender: 'user',
       });
       setTextInput('');
+      
+      // Trigger interviewer response after user message
+      setTimeout(() => {
+        onInterviewerResponse();
+      }, 1000);
     }
   };
 
@@ -141,6 +146,11 @@ const VoiceInput = ({ onSendMessage }) => {
       });
       setCurrentRecording(null);
       setRecordingTime(0);
+      
+      // Trigger interviewer response after voice message
+      setTimeout(() => {
+        onInterviewerResponse();
+      }, 1000);
     }
   };
 

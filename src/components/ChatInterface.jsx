@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import MessageBubble from './MessageBubble';
 import VoiceInput from './VoiceInput';
 
-const ChatInterface = ({ messages, onAddMessage }) => {
+const ChatInterface = ({ messages, onAddMessage, onInterviewerResponse }) => {
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -23,7 +23,7 @@ const ChatInterface = ({ messages, onAddMessage }) => {
 
       {/* Input Area */}
       <div className="border-t border-slate-200 bg-white p-4">
-        <VoiceInput onSendMessage={onAddMessage} />
+        <VoiceInput onSendMessage={onAddMessage} onInterviewerResponse={onInterviewerResponse} />
       </div>
     </div>
   );
